@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import RedNorte.Gestion.model.CitaMedica;
+import RedNorte.Gestion.model.Cliente;
 import RedNorte.Gestion.repository.CitaMedicaRepository;
 import jakarta.transaction.Transactional;
 
@@ -46,6 +47,13 @@ public class CitaMedicaService {
     }
     return null;
 }
+    public List<CitaMedica> findByCliente(Cliente cliente){
+        List<CitaMedica> citaMedica = citaMedicaRepository.findByCliente(cliente);
+        if (citaMedica !=null) {
+            return citaMedicaRepository.findByCliente(cliente);
+        }
+        return null;
+    }
 
     public void deleteById(Long id) {
         citaMedicaRepository.deleteById(id);

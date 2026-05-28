@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class CitaMedica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, length = 40)
     private Date fecha;
