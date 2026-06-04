@@ -1,10 +1,5 @@
 package RedNorte.Gestion.model;
 
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.OneToMany;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,8 +39,4 @@ public class Cliente {
     @Column(nullable = false, length = 40)
     private String direccion;
 
-    @OneToMany(mappedBy = "cliente",
-               cascade = CascadeType.ALL,
-               orphanRemoval = true)
-    private List<CitaMedica> citas;
 }

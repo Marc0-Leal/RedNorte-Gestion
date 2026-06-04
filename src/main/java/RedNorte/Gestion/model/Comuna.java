@@ -1,5 +1,6 @@
 package RedNorte.Gestion.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class Comuna {
     @Column(nullable = false, length = 40)
     private String nombre;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "region", nullable = false)
     private Region region;
 }
