@@ -38,7 +38,7 @@ public class CitaMedica {
     @JoinColumn(name = "medico", nullable = false)
     private Medico medico;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "pago", nullable = false)
     private Pago pago;
 
@@ -47,6 +47,6 @@ public class CitaMedica {
     private Cliente cliente;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "listaEspera", nullable = false)
+    @JoinColumn(name = "listaEspera", nullable = true)
     private ListaEspera listaEspera;
 }
