@@ -1,5 +1,6 @@
 package RedNorte.Gestion.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class Hospital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, length = 40)
     private String nombre;
@@ -32,7 +33,7 @@ public class Hospital {
     @Column(nullable = false, length = 9)
     private Integer telefono;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "comuna", nullable = false)
     private Comuna comuna;
 }
