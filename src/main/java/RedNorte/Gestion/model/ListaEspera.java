@@ -25,7 +25,7 @@ public class ListaEspera {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 40)
+    @Column(nullable = true, length = 40)
     private Date fecha_solitud;
 
     @Column(nullable = false, length = 40)
