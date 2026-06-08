@@ -1,7 +1,5 @@
 package RedNorte.Gestion.model;
 
-import java.sql.Date;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +12,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "citaMedica")
@@ -26,7 +25,7 @@ public class CitaMedica {
     private Long id;
 
     @Column(nullable = false, length = 40)
-    private Date fecha;
+    private LocalDate fecha;
 
     @Column(nullable = false, length = 40)
     private Integer hora;

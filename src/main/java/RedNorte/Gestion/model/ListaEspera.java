@@ -1,6 +1,6 @@
 package RedNorte.Gestion.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -26,7 +26,7 @@ public class ListaEspera {
     private Long id;
 
     @Column(nullable = true, length = 40)
-    private Date fecha_solitud;
+    private LocalDate fecha_solitud;
 
     @Column(nullable = false, length = 40)
     private String prioridad;
