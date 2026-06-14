@@ -43,6 +43,9 @@ public class CitaMedicaService {
         if (citaMedica.getEstado() != null) { 
             existingCitaMedica.setEstado(citaMedica.getEstado());
         }
+        if (citaMedica.getSintomas() != null) { 
+            existingCitaMedica.setSintomas(citaMedica.getSintomas());
+        }
         return citaMedicaRepository.save(existingCitaMedica);
     }
     return null;

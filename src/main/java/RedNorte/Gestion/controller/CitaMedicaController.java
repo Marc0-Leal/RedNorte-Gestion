@@ -1,8 +1,6 @@
 package RedNorte.Gestion.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import RedNorte.Gestion.model.CitaMedica;
 import RedNorte.Gestion.model.Cliente;
 import RedNorte.Gestion.service.CitaMedicaService;
-import io.swagger.v3.oas.annotations.Operation;
 @RestController
 @RequestMapping("/api/citaMedica")
 public class CitaMedicaController {
