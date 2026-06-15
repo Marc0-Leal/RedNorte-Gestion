@@ -46,9 +46,9 @@ public CitaMedica patchCitaMedica(CitaMedica citaMedica) {
         if (citaMedica.getSintomas() != null) {
             existingCitaMedica.setSintomas(citaMedica.getSintomas());
         }
-        if (citaMedica.getMedico() != null) {          
-            existingCitaMedica.setMedico(citaMedica.getMedico());  
-        }                                              
+        if (citaMedica.getMedico() != null) {
+            existingCitaMedica.setMedico(citaMedica.getMedico());
+        }                                         
         return citaMedicaRepository.save(existingCitaMedica);
     }
     return null;

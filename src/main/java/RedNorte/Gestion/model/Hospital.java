@@ -36,4 +36,8 @@ public class Hospital {
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "comuna", nullable = false)
     private Comuna comuna;
+
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "hospital", nullable = true)
+    private Hospital hospital;
 }
