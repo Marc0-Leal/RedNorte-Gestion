@@ -23,31 +23,31 @@ public class CitaMedica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 40)
+    @Column(nullable = true, length = 40)
     private LocalDate fecha;
 
-    @Column(nullable = false, length = 40)
+    @Column(nullable = true, length = 40)
     private Integer hora;
 
-    @Column(nullable = false, length = 40)
+    @Column(nullable = true, length = 40)
     private String estado;
 
-    @Column(nullable = false, length = 250)
+    @Column(nullable = true, length = 250)
     private String sintomas;
 
     @ManyToOne
-    @JoinColumn(name = "medico", nullable = false)
+    @JoinColumn(name = "medico", nullable = true)
     private Medico medico;
 
     @ManyToOne
-    @JoinColumn(name = "pago", nullable = false)
+    @JoinColumn(name = "pago", nullable = true)
     private Pago pago;
 
     @ManyToOne
-    @JoinColumn(name = "cliente", nullable = false)
+    @JoinColumn(name = "cliente", nullable = true)
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name = "listaEspera", nullable = false)
+    @JoinColumn(name = "listaEspera", nullable = true)
     private ListaEspera listaEspera;
 }
