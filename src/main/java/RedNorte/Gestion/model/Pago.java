@@ -1,7 +1,5 @@
 package RedNorte.Gestion.model;
 
-import java.sql.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +9,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "pago")
@@ -22,13 +20,13 @@ public class Pago {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, length = 40)
     private Integer monto;
 
     @Column(nullable = false, length = 40)
-    private Date fecha_pago;
+    private LocalDate fecha_pago;
 
     @Column(nullable = false, length = 40)
     private String metodo_pago;
