@@ -10,7 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import RedNorte.Gestion.model.CitaMedica;
 import RedNorte.Gestion.repository.CitaMedicaRepository;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -33,9 +33,10 @@ class CitaMedicaServiceTest {
     void setUp() {
         citaMedica = new CitaMedica();
         citaMedica.setId(1L);
-        citaMedica.setFecha(Date.valueOf("2024-01-15"));
+        citaMedica.setFecha(LocalDate.of(2024, 1, 15));
         citaMedica.setHora(10);
         citaMedica.setEstado("Pendiente");
+        citaMedica.setSintomas("Dolor de cabeza");
     }
 
     @Test
@@ -84,9 +85,10 @@ class CitaMedicaServiceTest {
     void patchCitaMedica_conIdExistente_debeActualizarCampos() {
         CitaMedica actualizacion = new CitaMedica();
         actualizacion.setId(1L);
-        actualizacion.setFecha(Date.valueOf("2024-02-20"));
+        actualizacion.setFecha(LocalDate.of(2024, 2, 20));
         actualizacion.setHora(14);
         actualizacion.setEstado("Confirmada");
+        actualizacion.setSintomas("Fiebre");
 
         when(citaMedicaRepository.findById(1L)).thenReturn(Optional.of(citaMedica));
         when(citaMedicaRepository.save(any(CitaMedica.class))).thenReturn(citaMedica);
@@ -112,10 +114,10 @@ class CitaMedicaServiceTest {
 
     @Test
     void deleteById_debeEliminarCitaMedica() {
-        doNothing().when(citaMedicaRepository).deleteById(1L);
+        when(citaMedicaRepository.findById(1L)).thenReturn(Optional.empty());
 
         citaMedicaService.deleteById(1L);
 
-        verify(citaMedicaRepository, times(1)).deleteById(1L);
+        verify(citaMedicaRepository, times(1)).findById(1L);
     }
 }

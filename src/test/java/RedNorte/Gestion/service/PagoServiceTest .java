@@ -10,7 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import RedNorte.Gestion.model.Pago;
 import RedNorte.Gestion.repository.PagoRepository;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -34,7 +34,7 @@ class PagoServiceTest {
         pago = new Pago();
         pago.setId(1L);
         pago.setMonto(50000);
-        pago.setFecha_pago(Date.valueOf("2024-01-20"));
+        pago.setFecha_pago(LocalDate.of(2024, 1, 20));
         pago.setMetodo_pago("Tarjeta");
         pago.setEstado("Pagado");
     }
@@ -86,7 +86,7 @@ class PagoServiceTest {
         Pago actualizacion = new Pago();
         actualizacion.setId(1L);
         actualizacion.setMonto(75000);
-        actualizacion.setFecha_pago(Date.valueOf("2024-02-15"));
+        actualizacion.setFecha_pago(LocalDate.of(2024, 2, 15));
         actualizacion.setMetodo_pago("Efectivo");
         actualizacion.setEstado("Pendiente");
 

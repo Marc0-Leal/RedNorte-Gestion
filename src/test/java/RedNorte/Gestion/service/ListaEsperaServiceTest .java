@@ -10,7 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import RedNorte.Gestion.model.ListaEspera;
 import RedNorte.Gestion.repository.ListaEsperaRepository;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +33,7 @@ class ListaEsperaServiceTest {
     void setUp() {
         listaEspera = new ListaEspera();
         listaEspera.setId(1L);
-        listaEspera.setFecha_solitud(Date.valueOf("2024-01-10"));
+        listaEspera.setFecha_solitud(LocalDate.of(2024, 1, 10));
         listaEspera.setPrioridad("Alta");
     }
 
@@ -83,7 +83,7 @@ class ListaEsperaServiceTest {
     void patchListaEspera_conIdExistente_debeActualizarCampos() {
         ListaEspera actualizacion = new ListaEspera();
         actualizacion.setId(1L);
-        actualizacion.setFecha_solitud(Date.valueOf("2024-03-01"));
+        actualizacion.setFecha_solitud(LocalDate.of(2024, 3, 1));
         actualizacion.setPrioridad("Media");
 
         when(listaEsperaRepository.findById(1L)).thenReturn(Optional.of(listaEspera));
