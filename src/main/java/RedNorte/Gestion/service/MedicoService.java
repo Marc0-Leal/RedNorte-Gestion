@@ -49,7 +49,11 @@ public class MedicoService {
         return medicoRepository.save(existingMedico);
     }
     return null;
-}
+    }
+
+    public List<Medico> findByHospitalId(Long hospitalId) {
+        return medicoRepository.findByHospitalId(hospitalId);
+    }
 
     public void deleteById(Long id) {
         medicoRepository.deleteById(id);
