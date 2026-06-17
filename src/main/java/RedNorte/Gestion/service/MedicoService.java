@@ -29,30 +29,26 @@ public class MedicoService {
     }
 
     public Medico patchMedico(Medico citaMedica) {
-    Medico existingMedico = medicoRepository.findById(citaMedica.getId()).orElse(null);
-    if (existingMedico != null) {
-        if (citaMedica.getNombre() != null) {
-            existingMedico.setNombre(citaMedica.getNombre());
+        Medico existingMedico = medicoRepository.findById(citaMedica.getId()).orElse(null);
+        if (existingMedico != null) {
+            if (citaMedica.getNombre() != null) {
+                existingMedico.setNombre(citaMedica.getNombre());
+            }
+            if (citaMedica.getApellido() != null) {
+                existingMedico.setApellido(citaMedica.getApellido());
+            }
+            if (citaMedica.getEspecialidad() != null) { 
+                existingMedico.setEspecialidad(citaMedica.getEspecialidad());
+            }
+            if (citaMedica.getTelefono() != null) {
+                existingMedico.setTelefono(citaMedica.getTelefono());
+            }
+            if (citaMedica.getCorreo() != null) {
+                existingMedico.setCorreo(citaMedica.getCorreo());
+            }
+            return medicoRepository.save(existingMedico);
         }
-        if (citaMedica.getApellido() != null) {
-            existingMedico.setApellido(citaMedica.getApellido());
-        }
-        if (citaMedica.getEspecialidad() != null) { 
-            existingMedico.setEspecialidad(citaMedica.getEspecialidad());
-        }
-        if (citaMedica.getTelefono() != null) {
-            existingMedico.setTelefono(citaMedica.getTelefono());
-        }
-        if (citaMedica.getCorreo() != null) {
-            existingMedico.setCorreo(citaMedica.getCorreo());
-        }
-        return medicoRepository.save(existingMedico);
-    }
-    return null;
-    }
-
-    public List<Medico> findByHospitalId(Long hospitalId) {
-        return medicoRepository.findByHospitalId(hospitalId);
+        return null;
     }
 
     public void deleteById(Long id) {

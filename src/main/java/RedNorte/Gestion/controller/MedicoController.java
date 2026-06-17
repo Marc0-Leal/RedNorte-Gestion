@@ -66,15 +66,6 @@ public class MedicoController {
         return ResponseEntity.ok(patchedMedico);
     }   
 
-    @GetMapping("/hospital/{hospitalId}")
-    public ResponseEntity<List<Medico>> getMedicosByHospital(@PathVariable Long hospitalId) {
-        List<Medico> medicos = medicoService.findByHospitalId(hospitalId);
-        if (medicos.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(medicos);
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMedico(@PathVariable Long id) {
         medicoService.deleteById(id);
