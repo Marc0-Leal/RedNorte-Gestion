@@ -48,9 +48,9 @@ public class CitaMedicaService {
             }
             if (citaMedica.getMedico() != null) {
                 existingCitaMedica.setMedico(citaMedica.getMedico());
-            }    
-        }                                     
-        return citaMedicaRepository.save(existingCitaMedica);
+            }                                         
+            
+        }return citaMedicaRepository.save(existingCitaMedica);
     }
 
     public List<CitaMedica> findByCliente(Cliente cliente){
