@@ -27,7 +27,7 @@ public class CitaMedica {
     @Column(nullable = true, length = 40)
     private LocalDate fecha;
 
-    @Column(nullable = true, length = 40)
+    @Column(name = "hora", nullable = true) 
     private Integer hora;
 
     @Column(nullable = true, length = 40)
@@ -37,17 +37,16 @@ public class CitaMedica {
     private String sintomas;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "medico", nullable = false)
+    @JoinColumn(name = "medico", nullable = false) 
     private Medico medico;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @JoinColumn(name = "pago", nullable = false)
+    @JoinColumn(name = "pago", nullable = true) 
     private Pago pago;
 
     @ManyToOne
-    @JoinColumn(name = "cliente", nullable = true)
+    @JoinColumn(name = "cliente", nullable = false)
     private Cliente cliente;
-
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "listaEspera", nullable = true)
