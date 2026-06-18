@@ -32,22 +32,23 @@ public class CitaMedica {
     @Column(nullable = true, length = 40)
     private String estado;
 
-    @Column(nullable = true, length = 250)
+    @Column(nullable = true)
     private String sintomas;
 
-    @ManyToOne
-    @JoinColumn(name = "medico", nullable = true)
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "medico", nullable = false)
     private Medico medico;
 
-    @ManyToOne
-    @JoinColumn(name = "pago", nullable = true)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name = "pago", nullable = false)
     private Pago pago;
 
     @ManyToOne
     @JoinColumn(name = "cliente", nullable = true)
     private Cliente cliente;
 
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "listaEspera", nullable = true)
     private ListaEspera listaEspera;
 }

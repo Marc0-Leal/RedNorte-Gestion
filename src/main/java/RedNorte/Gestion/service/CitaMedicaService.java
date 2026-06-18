@@ -50,12 +50,11 @@ public CitaMedica patchCitaMedica(CitaMedica citaMedica) {
             existingCitaMedica.setMedico(citaMedica.getMedico());
         }                                         
         return citaMedicaRepository.save(existingCitaMedica);
-    }
-    return null;
-}
+
+
     public List<CitaMedica> findByCliente(Cliente cliente){
         List<CitaMedica> citaMedica = citaMedicaRepository.findByCliente(cliente);
-        if (citaMedica !=null) {
+        if (citaMedica != null) {
             return citaMedicaRepository.findByCliente(cliente);
         }
         return null;
