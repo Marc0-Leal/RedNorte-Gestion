@@ -33,6 +33,9 @@ public class CitaMedica {
     @Column(nullable = false, length = 40)
     private String estado;
 
+    @Column(nullable = true)
+    private String sintomas;
+
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "medico", nullable = false)
     private Medico medico;
