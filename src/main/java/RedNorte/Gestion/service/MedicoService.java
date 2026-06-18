@@ -18,10 +18,14 @@ public class MedicoService {
     public List<Medico> findAll() {
         return medicoRepository.findAll();
     }
-    
+
     public Medico findById(Long id) {
         Medico Medico = medicoRepository.findById(id).orElse(null);
         return Medico;
+    }
+
+    public List<Medico> findByHospital(Long hospitalId) {
+        return medicoRepository.findByHospitalId(hospitalId);
     }
 
     public Medico save(Medico citaMedica) {
@@ -37,7 +41,7 @@ public class MedicoService {
             if (citaMedica.getApellido() != null) {
                 existingMedico.setApellido(citaMedica.getApellido());
             }
-            if (citaMedica.getEspecialidad() != null) { 
+            if (citaMedica.getEspecialidad() != null) {
                 existingMedico.setEspecialidad(citaMedica.getEspecialidad());
             }
             if (citaMedica.getTelefono() != null) {

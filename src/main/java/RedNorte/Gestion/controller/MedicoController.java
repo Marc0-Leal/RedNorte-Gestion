@@ -36,8 +36,17 @@ public class MedicoController {
         Medico citaMedica = medicoService.findById(id);
         if (citaMedica == null) {
             return ResponseEntity.notFound().build();
-        } 
+        }
         return ResponseEntity.ok(citaMedica);
+    }
+
+    @GetMapping("/hospital/{hospitalId}")
+    public ResponseEntity<List<Medico>> getMedicosByHospital(@PathVariable Long hospitalId) {
+        List<Medico> medicos = medicoService.findByHospital(hospitalId);
+        if (medicos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(medicos);
     }
 
     @PostMapping
@@ -62,9 +71,9 @@ public class MedicoController {
         Medico patchedMedico = medicoService.patchMedico(citaMedica);
         if (patchedMedico == null) {
             return ResponseEntity.notFound().build();
-        } 
+        }
         return ResponseEntity.ok(patchedMedico);
-    }   
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMedico(@PathVariable Long id) {
