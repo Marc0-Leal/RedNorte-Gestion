@@ -31,26 +31,27 @@ public class CitaMedicaService {
         return citaMedicaRepository.save(citaMedica);
     }
 
-public CitaMedica patchCitaMedica(CitaMedica citaMedica) {
-    CitaMedica existingCitaMedica = citaMedicaRepository.findById(citaMedica.getId()).orElse(null);
-    if (existingCitaMedica != null) {
-        if (citaMedica.getFecha() != null) {
-            existingCitaMedica.setFecha(citaMedica.getFecha());
-        }
-        if (citaMedica.getHora() != null) {
-            existingCitaMedica.setHora(citaMedica.getHora());
-        }
-        if (citaMedica.getEstado() != null) {
-            existingCitaMedica.setEstado(citaMedica.getEstado());
-        }
-        if (citaMedica.getSintomas() != null) {
-            existingCitaMedica.setSintomas(citaMedica.getSintomas());
-        }
-        if (citaMedica.getMedico() != null) {
-            existingCitaMedica.setMedico(citaMedica.getMedico());
-        }                                         
+    public CitaMedica patchCitaMedica(CitaMedica citaMedica) {
+        CitaMedica existingCitaMedica = citaMedicaRepository.findById(citaMedica.getId()).orElse(null);
+        if (existingCitaMedica != null) {
+            if (citaMedica.getFecha() != null) {
+                existingCitaMedica.setFecha(citaMedica.getFecha());
+            }
+            if (citaMedica.getHora() != null) {
+                existingCitaMedica.setHora(citaMedica.getHora());
+            }
+            if (citaMedica.getEstado() != null) {
+                existingCitaMedica.setEstado(citaMedica.getEstado());
+            }
+            if (citaMedica.getSintomas() != null) {
+                existingCitaMedica.setSintomas(citaMedica.getSintomas());
+            }
+            if (citaMedica.getMedico() != null) {
+                existingCitaMedica.setMedico(citaMedica.getMedico());
+            }    
+        }                                     
         return citaMedicaRepository.save(existingCitaMedica);
-
+    }
 
     public List<CitaMedica> findByCliente(Cliente cliente){
         List<CitaMedica> citaMedica = citaMedicaRepository.findByCliente(cliente);
