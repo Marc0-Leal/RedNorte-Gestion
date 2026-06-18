@@ -43,9 +43,6 @@ public class MedicoController {
     @GetMapping("/hospital/{hospitalId}")
     public ResponseEntity<List<Medico>> getMedicosByHospital(@PathVariable Long hospitalId) {
         List<Medico> medicos = medicoService.findByHospital(hospitalId);
-        if (medicos.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
         return ResponseEntity.ok(medicos);
     }
 
