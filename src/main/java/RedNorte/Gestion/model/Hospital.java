@@ -12,8 +12,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-import com.fasterxml.jackson.annotation.JsonIgnore; 
+
 
 @Entity
 @Table(name = "hospital")
@@ -34,16 +33,11 @@ public class Hospital {
     @Column(nullable = false, length = 9)
     private Integer telefono;
 
-    //(cascade = CascadeType.REMOVE)
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "comuna", nullable = false)
     private Comuna comuna;
 
-    //(cascade = CascadeType.REMOVE)
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "hospital", nullable = true)
-
-    @JsonIgnore 
-    @ToString.Exclude
     private Hospital hospital;
 }

@@ -1,6 +1,5 @@
 package RedNorte.Gestion.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,28 +26,28 @@ public class CitaMedica {
     @Column(nullable = true, length = 40)
     private LocalDate fecha;
 
-    @Column(name = "hora", nullable = true) 
+    @Column(nullable = true, length = 40)
     private Integer hora;
 
     @Column(nullable = true, length = 40)
     private String estado;
 
-    @Column(nullable = true)
+    @Column(nullable = true, length = 250)
     private String sintomas;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "medico", nullable = false) 
+    @ManyToOne
+    @JoinColumn(name = "medico", nullable = true)
     private Medico medico;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @JoinColumn(name = "pago", nullable = true) 
+    @ManyToOne
+    @JoinColumn(name = "pago", nullable = true)
     private Pago pago;
 
     @ManyToOne
-    @JoinColumn(name = "cliente", nullable = false)
+    @JoinColumn(name = "cliente", nullable = true)
     private Cliente cliente;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "listaEspera", nullable = true)
     private ListaEspera listaEspera;
 }

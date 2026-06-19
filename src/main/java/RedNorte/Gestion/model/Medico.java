@@ -11,8 +11,6 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString; 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "medico")
@@ -42,8 +40,6 @@ public class Medico {
 
     @ManyToOne
     @JoinColumn(name = "hospital_id", nullable = true)
-    @JsonIgnore     
-    @ToString.Exclude
     private Hospital hospital;
 
 }
