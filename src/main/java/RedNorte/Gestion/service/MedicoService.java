@@ -4,7 +4,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import RedNorte.Gestion.model.Hospital;
 import RedNorte.Gestion.model.Medico;
+import RedNorte.Gestion.repository.HospitalRepository;
 import RedNorte.Gestion.repository.MedicoRepository;
 import jakarta.transaction.Transactional;
 
@@ -15,13 +17,20 @@ public class MedicoService {
     @Autowired
     private MedicoRepository medicoRepository;
 
+    @Autowired
+    private HospitalRepository hospitalRepository;
+
     public List<Medico> findAll() {
         return medicoRepository.findAll();
     }
-    
+
     public Medico findById(Long id) {
         Medico Medico = medicoRepository.findById(id).orElse(null);
         return Medico;
+    }
+
+    public List<Medico> findByHospital(Long hospitalId) {
+        return medicoRepository.findByHospitalId(hospitalId);
     }
 
     public Medico save(Medico citaMedica) {
@@ -37,7 +46,7 @@ public class MedicoService {
             if (citaMedica.getApellido() != null) {
                 existingMedico.setApellido(citaMedica.getApellido());
             }
-            if (citaMedica.getEspecialidad() != null) { 
+            if (citaMedica.getEspecialidad() != null) {
                 existingMedico.setEspecialidad(citaMedica.getEspecialidad());
             }
             if (citaMedica.getTelefono() != null) {
@@ -45,6 +54,12 @@ public class MedicoService {
             }
             if (citaMedica.getCorreo() != null) {
                 existingMedico.setCorreo(citaMedica.getCorreo());
+            }
+            if (citaMedica.getHospital() != null && citaMedica.getHospital().getId() != null) {
+                Hospital hospital = hospitalRepository.findById(citaMedica.getHospital().getId()).orElse(null);
+                if (hospital != null) {
+                    existingMedico.setHospital(hospital);
+                }
             }
             return medicoRepository.save(existingMedico);
         }
