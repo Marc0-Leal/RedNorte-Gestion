@@ -1,7 +1,6 @@
 package RedNorte.Gestion.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import RedNorte.Gestion.model.CitaMedica;
+import RedNorte.Gestion.model.Cliente;
 import RedNorte.Gestion.service.CitaMedicaService;
 @RestController
 @RequestMapping("/api/citaMedica")
@@ -55,6 +55,20 @@ public class CitaMedicaController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(updatedCitaMedica);
+    }
+
+
+    @GetMapping("/cliente/{clienteId}")
+    public ResponseEntity<List<CitaMedica>> getCitasByCliente(@PathVariable Long clienteId) {
+        Cliente cliente = new Cliente();
+        cliente.setId(clienteId);
+        List<CitaMedica> citas = citaMedicaService.findByCliente(cliente);
+
+        if (citas == null || citas.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(citas);
     }
 
     @PatchMapping("/{id}")
